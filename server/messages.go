@@ -14,6 +14,7 @@ type LastAttackMessage struct {
     Pokemon string `json:"pokemon"`
     Move string `json:"move"`
     Multiplier float64 `json:"multiplier"`
+    Damage uint `json:"damage"`
 }
 
 type BattleResult struct {
@@ -49,11 +50,11 @@ type MoveMessage struct {
 func makeBattleResult(state uint) BattleResult {
     br := BattleResult{DMoney: 0}
     if state == 0 {
-        br.Outcome = "Won"
+        br.Outcome = "WON"
     } else if state == 1 {
-        br.Outcome = "Lost"
+        br.Outcome = "LOST"
     } else {  // state == 2
-        br.Outcome = "Tie"
+        br.Outcome = "TIED"
     }
     return br
 }

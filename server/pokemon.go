@@ -76,20 +76,20 @@ func (p Pokemon) heal() {
     }
 }
 
-func (p1 Pokemon) attack(p2 Pokemon, move_idx int) float64 {
+func (p1 Pokemon) attack(p2 Pokemon, move_idx int) (X float64, dmg uint) {
     move := p1.moves[move_idx]
 
     A := float64(p1.level)
     B := float64(p1.base.Attack)
     C := float64(move.Power)
     D := float64(p2.base.Defense)
-    X := calcEffectiveness(move.moveType, p2.base.pokemonType)
+    X = calcEffectiveness(move.moveType, p2.base.pokemonType)
     Y := 1.0
     if p1.base.pokemonType.name == move.moveType.name {
         Y = 1.5
     }
 
-    dmg := uint(calcDmg(A, B, C, D, X, Y))
+    dmg = uint(calcDmg(A, B, C, D, X, Y))
     log.Println("Damage:", dmg)
     if dmg > p2.state.health {
         p2.state.health = 0
@@ -98,7 +98,7 @@ func (p1 Pokemon) attack(p2 Pokemon, move_idx int) float64 {
     }
     p1.state.pp[move_idx] -= 1
 
-    return X
+    return
 }
 
 

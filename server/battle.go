@@ -181,7 +181,9 @@ func (battle *Battle) process(action *ActionMessage) LastAttackMessage {
 
     if trainer.pokemon[0].state.health > 0 && action.Attack >= 0 && action.Attack < len(trainer.pokemon[0].moves) {
         if trainer.pokemon[0].state.pp[action.Attack] > 0 {
-            result.Multiplier = trainer.pokemon[0].attack(other_trainer.pokemon[0], action.Attack)
+            multiplier, dmg := trainer.pokemon[0].attack(other_trainer.pokemon[0], action.Attack)
+            result.Multiplier = multiplier
+            result.Damage = dmg
             result.Pokemon = trainer.pokemon[0].name
             result.Move = trainer.pokemon[0].moves[action.Attack].Name
         }

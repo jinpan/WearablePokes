@@ -1,0 +1,667 @@
+{
+    "struggle": {
+        "name": "Struggle",
+        "power": 35,
+        "accuracy": 0.95,
+        "type": "normal",
+        "pp": 20
+    },
+    "air cutter": {
+        "name": "Air Cutter",
+        "power": 55,
+        "accuracy": 0.95,
+        "type": "flying",
+        "pp": 20
+    },
+    "crabhammer": {
+        "name": "Crabhammer",
+        "power": 90,
+        "accuracy": 0.85,
+        "type": "water",
+        "pp": 20
+    },
+    "cross chop": {
+        "name": "Cross Chop",
+        "power": 100,
+        "accuracy": 0.8,
+        "type": "fighting",
+        "pp": 20
+    },
+    "drill peck": {
+        "name": "Drill Peck",
+        "power": 80,
+        "accuracy": 1,
+        "type": "flying",
+        "pp": 20
+    },
+    "egg bomb": {
+        "name": "Egg Bomb",
+        "power": 100,
+        "accuracy": 0.75,
+        "type": "normal",
+        "pp": 20
+    },
+    "horn attack": {
+        "name": "Horn Attack",
+        "power": 65,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "hydro pump": {
+        "name": "Hydro Pump",
+        "power": 120,
+        "accuracy": 0.8,
+        "type": "water",
+        "pp": 20
+    },
+    "hyper voice": {
+        "name": "Hyper Voice",
+        "power": 90,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "karate chop": {
+        "name": "Karate Chop",
+        "power": 50,
+        "accuracy": 1,
+        "type": "fighting",
+        "pp": 20
+    },
+    "megahorn": {
+        "name": "Megahorn",
+        "power": 120,
+        "accuracy": 0.85,
+        "type": "bug",
+        "pp": 20
+    },
+    "mega kick": {
+        "name": "Mega Kick",
+        "power": 120,
+        "accuracy": 0.75,
+        "type": "normal",
+        "pp": 20
+    },
+    "mega punch": {
+        "name": "Mega Punch",
+        "power": 80,
+        "accuracy": 0.85,
+        "type": "normal",
+        "pp": 20
+    },
+    "peck": {
+        "name": "Peck",
+        "power": 35,
+        "accuracy": 1,
+        "type": "flying",
+        "pp": 20
+    },
+    "pound": {
+        "name": "Pound",
+        "power": 40,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "razor leaf": {
+        "name": "Razor Leaf",
+        "power": 55,
+        "accuracy": 0.95,
+        "type": "grass",
+        "pp": 20
+    },
+    "rock throw": {
+        "name": "Rock Throw",
+        "power": 50,
+        "accuracy": 0.9,
+        "type": "rock",
+        "pp": 20
+    },
+    "scratch": {
+        "name": "Scratch",
+        "power": 40,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "sky uppercut": {
+        "name": "Sky Uppercut",
+        "power": 85,
+        "accuracy": 0.9,
+        "type": "fighting",
+        "pp": 20
+    },
+    "slam": {
+        "name": "Slam",
+        "power": 80,
+        "accuracy": 0.75,
+        "type": "normal",
+        "pp": 20
+    },
+    "slash": {
+        "name": "Slash",
+        "power": 70,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "tackle": {
+        "name": "Tackle",
+        "power": 35,
+        "accuracy": 0.95,
+        "type": "normal",
+        "pp": 20
+    },
+    "vicegrip": {
+        "name": "ViceGrip",
+        "power": 55,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "vine whip": {
+        "name": "Vine Whip",
+        "power": 35,
+        "accuracy": 1,
+        "type": "grass",
+        "pp": 20
+    },
+    "water gun": {
+        "name": "Water Gun",
+        "power": 40,
+        "accuracy": 1,
+        "type": "water",
+        "pp": 20
+    },
+    "waterfall": {
+        "name": "Waterfall",
+        "power": 80,
+        "accuracy": 1,
+        "type": "water",
+        "pp": 20
+    },
+    "wing attack": {
+        "name": "Wing Attack",
+        "power": 60,
+        "accuracy": 1,
+        "type": "flying",
+        "pp": 20
+    },
+    "lick": {
+        "name": "Lick",
+        "power": 20,
+        "accuracy": 1,
+        "type": "ghost",
+        "pp": 20
+    },
+    "blizzard": {
+        "name": "Blizzard",
+        "power": 120,
+        "accuracy": 0.7,
+        "type": "ice",
+        "pp": 20
+    },
+    "body slam": {
+        "name": "Body Slam",
+        "power": 85,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "dragonbreath": {
+        "name": "DragonBreath",
+        "power": 60,
+        "accuracy": 1,
+        "type": "dragon",
+        "pp": 20
+    },
+    "ember": {
+        "name": "Ember",
+        "power": 40,
+        "accuracy": 1,
+        "type": "fire",
+        "pp": 20
+    },
+    "fire blast": {
+        "name": "Fire Blast",
+        "power": 120,
+        "accuracy": 0.85,
+        "type": "fire",
+        "pp": 20
+    },
+    "fire punch": {
+        "name": "Fire Punch",
+        "power": 75,
+        "accuracy": 1,
+        "type": "fire",
+        "pp": 20
+    },
+    "flame wheel": {
+        "name": "Flame Wheel",
+        "power": 60,
+        "accuracy": 1,
+        "type": "fire",
+        "pp": 20
+    },
+    "flamethrower": {
+        "name": "Flamethrower",
+        "power": 95,
+        "accuracy": 1,
+        "type": "fire",
+        "pp": 20
+    },
+    "heat wave": {
+        "name": "Heat Wave",
+        "power": 100,
+        "accuracy": 0.9,
+        "type": "fire",
+        "pp": 20
+    },
+    "ice beam": {
+        "name": "Ice Beam",
+        "power": 95,
+        "accuracy": 1,
+        "type": "ice",
+        "pp": 20
+    },
+    "ice punch": {
+        "name": "Ice Punch",
+        "power": 75,
+        "accuracy": 1,
+        "type": "ice",
+        "pp": 20
+    },
+    "poison fang": {
+        "name": "Poison Fang",
+        "power": 50,
+        "accuracy": 1,
+        "type": "poison",
+        "pp": 20
+    },
+    "poison sting": {
+        "name": "Poison Fang",
+        "power": 15,
+        "accuracy": 1,
+        "type": "poison",
+        "pp": 20
+    },
+    "powder snow": {
+        "name": "Powder Snow",
+        "power": 40,
+        "accuracy": 1,
+        "type": "ice",
+        "pp": 20
+    },
+    "sludge": {
+        "name": "Sludge",
+        "power": 65,
+        "accuracy": 1,
+        "type": "poison",
+        "pp": 20
+    },
+    "sludge bomb": {
+        "name": "Sludge Bomb",
+        "power": 90,
+        "accuracy": 1,
+        "type": "poison",
+        "pp": 20
+    },
+    "smog": {
+        "name": "Smog",
+        "power": 20,
+        "accuracy": 0.7,
+        "type": "poison",
+        "pp": 20
+    },
+    "spark": {
+        "name": "Spark",
+        "power": 65,
+        "accuracy": 1,
+        "type": "electric",
+        "pp": 20
+    },
+    "thunder": {
+        "name": "Thunder",
+        "power": 120,
+        "accuracy": 0.7,
+        "type": "electric",
+        "pp": 20
+    },
+    "thunderbolt": {
+        "name": "Thunderbolt",
+        "power": 95,
+        "accuracy": 1,
+        "type": "electric",
+        "pp": 20
+    },
+    "thunderpunch": {
+        "name": "ThunderPunch",
+        "power": 75,
+        "accuracy": 1,
+        "type": "electric",
+        "pp": 20
+    },
+    "thundershock": {
+        "name": "ThunderShock",
+        "power": 40,
+        "accuracy": 1,
+        "type": "electric",
+        "pp": 20
+    },
+    "zap cannon": {
+        "name": "Zap Cannon",
+        "power": 100,
+        "accuracy": 0.5,
+        "type": "electric",
+        "pp": 20
+    },
+    "acid": {
+        "name": "Acid",
+        "power": 40,
+        "accuracy": 1,
+        "type": "poison",
+        "pp": 20
+    },
+    "astonish": {
+        "name": "Astonish",
+        "power": 30,
+        "accuracy": 1,
+        "type": "ghost",
+        "pp": 20
+    },
+    "aurora beam": {
+        "name": "Aurora Beam",
+        "power": 65,
+        "accuracy": 1,
+        "type": "ice",
+        "pp": 20
+    },
+    "bite": {
+        "name": "Bite",
+        "power": 60,
+        "accuracy": 1,
+        "type": "dark",
+        "pp": 20
+    },
+    "bone club": {
+        "name": "Bone Club",
+        "power": 65,
+        "accuracy": 0.85,
+        "type": "ground",
+        "pp": 20
+    },
+    "bubble": {
+        "name": "Bubble",
+        "power": 20,
+        "accuracy": 1,
+        "type": "water",
+        "pp": 20
+    },
+    "bubblebeam": {
+        "name": "BubbleBeam",
+        "power": 65,
+        "accuracy": 1,
+        "type": "water",
+        "pp": 20
+    },
+    "constrict": {
+        "name": "Constrict",
+        "power": 10,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "crunch": {
+        "name": "Crunch",
+        "power": 80,
+        "accuracy": 1,
+        "type": "dark",
+        "pp": 20
+    },
+    "dragon claw": {
+        "name": "Dragon Claw",
+        "power": 80,
+        "accuracy": 1,
+        "type": "simple",
+        "pp": 20
+    },
+    "headbutt": {
+        "name": "Headbutt",
+        "power": 70,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "hyper fang": {
+        "name": "Hyper Fang",
+        "power": 80,
+        "accuracy": 0.9,
+        "type": "normal",
+        "pp": 20
+    },
+    "icy wind": {
+        "name": "Icy Wind",
+        "power": 55,
+        "accuracy": 0.95,
+        "type": "ice",
+        "pp": 20
+    },
+    "iron tail": {
+        "name": "Iron Tail",
+        "power": 100,
+        "accuracy": 0.75,
+        "type": "steel",
+        "pp": 20
+    },
+    "mud shot": {
+        "name": "Mud Shot",
+        "power": 55,
+        "accuracy": 0.95,
+        "type": "ground",
+        "pp": 20
+    },
+    "psychic": {
+        "name": "Psychic",
+        "power": 90,
+        "accuracy": 1,
+        "type": "psychic",
+        "pp": 20
+    },
+    "rock tomb": {
+        "name": "Rock Tomb",
+        "power": 50,
+        "accuracy": 0.8,
+        "type": "rock",
+        "pp": 20
+    },
+    "rolling kick": {
+        "name": "Rolling Kick",
+        "power": 60,
+        "accuracy": 0.85,
+        "type": "fighting",
+        "pp": 20
+    },
+    "shadow ball": {
+        "name": "Shadow Ball",
+        "power": 80,
+        "accuracy": 1,
+        "type": "ghost",
+        "pp": 20
+    },
+    "snore": {
+        "name": "Snore",
+        "power": 40,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "stomp": {
+        "name": "Stomp",
+        "power": 65,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "aerial ace": {
+        "name": "Aerial Ace",
+        "power": 60,
+        "accuracy": 1,
+        "type": "flying",
+        "pp": 20
+    },
+    "ancientpower": {
+        "name": "AncientPower",
+        "power": 60,
+        "accuracy": 1,
+        "type": "rock",
+        "pp": 20
+    },
+    "confusion": {
+        "name": "Confusion",
+        "power": 50,
+        "accuracy": 1,
+        "type": "psychic",
+        "pp": 20
+    },
+    "dizzy punch": {
+        "name": "Dizzy Punch",
+        "power": 70,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "dynamicpunch": {
+        "name": "DynamicPunch",
+        "power": 100,
+        "accuracy": 0.5,
+        "type": "fighting",
+        "pp": 20
+    },
+    "earthquake": {
+        "name": "Earthquake",
+        "power": 100,
+        "accuracy": 1,
+        "type": "ground",
+        "pp": 20
+    },
+    "Faint Attack": {
+        "name": "Faint Attack",
+        "power": 60,
+        "accuracy": 1,
+        "type": "dark",
+        "pp": 20
+    },
+    "gust": {
+        "name": "Gust",
+        "power": 40,
+        "accuracy": 1,
+        "type": "flying",
+        "pp": 20
+    },
+    "low kick": {
+        "name": "Low Kick",
+        "power": 50,
+        "accuracy": 1,
+        "type": "fighting",
+        "pp": 20
+    },
+    "magical leaf": {
+        "name": "Magical Leaf",
+        "power": 60,
+        "accuracy": 1,
+        "type": "grass",
+        "pp": 20
+    },
+    "metal claw": {
+        "name": "Metal Claw",
+        "power": 50,
+        "accuracy": 0.95,
+        "type": "steel",
+        "pp": 20
+    },
+    "meteor mash": {
+        "name": "Meteor Mash",
+        "power": 100,
+        "accuracy": 0.85,
+        "type": "steel",
+        "pp": 20
+    },
+    "overheat": {
+        "name": "Overheat",
+        "power": 140,
+        "accuracy": 0.9,
+        "type": "fire",
+        "pp": 20
+    },
+    "psybeam": {
+        "name": "Psybeam",
+        "power": 65,
+        "accuracy": 1,
+        "type": "psychic",
+        "pp": 20
+    },
+    "shadow punch": {
+        "name": "Shadow Punch",
+        "power": 60,
+        "accuracy": 1,
+        "type": "ghost",
+        "pp": 20
+    },
+    "shock wave": {
+        "name": "Shock Wave",
+        "power": 60,
+        "accuracy": 1,
+        "type": "electric",
+        "pp": 20
+    },
+    "signal beam": {
+        "name": "Signal Beam",
+        "power": 75,
+        "accuracy": 1,
+        "type": "bug",
+        "pp": 20
+    },
+    "silver wind": {
+        "name": "Silver Wind",
+        "power": 60,
+        "accuracy": 1,
+        "type": "bug",
+        "pp": 20
+    },
+    "steel wing": {
+        "name": "Steel Wing",
+        "power": 70,
+        "accuracy": 0.1,
+        "type": "steel",
+        "pp": 20
+    },
+    "superpower": {
+        "name": "Superpower",
+        "power": 120,
+        "accuracy": 1,
+        "type": "fighting",
+        "pp": 20
+    },
+    "swift": {
+        "name": "Swift",
+        "power": 60,
+        "accuracy": 1,
+        "type": "normal",
+        "pp": 20
+    },
+    "twister": {
+        "name": "Twister",
+        "power": 40,
+        "accuracy": 1,
+        "type": "dragon",
+        "pp": 20
+    },
+    "water pulse": {
+        "name": "Water Pulse",
+        "power": 60,
+        "accuracy": 1,
+        "type": "water",
+        "pp": 20
+    }
+}

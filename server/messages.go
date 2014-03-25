@@ -21,7 +21,7 @@ type BattleResult struct {
 }
 
 type StateMessage struct {
-    MyPokemon []PokemonMessage `json:"my_pokemon"`
+    MyPokemon []PokemonMessage `json:"pokemon"`
     OtherPokemon PokemonMessage `json:"other_pokemon"`
     MyMove bool `json:"my_move"`
     LastAttack LastAttackMessage `json:"last_attack"`
@@ -31,13 +31,17 @@ type PokemonMessage struct {
     Id string `json:"id"`
     Name string `json:"name"`
     Level uint `json:"level"`
-    Health uint `json:"health"`
+    Health uint `json:"hp"`
+    MaxHealth uint `json:"maxhp"`
     Moves []MoveMessage `json:"moves"`
 }
 
 type MoveMessage struct {
     Name string `json:"name"`
     PP uint `json:"pp"`
+    MaxPP uint `json:"maxpp"`
+    Power uint `json:"power"`
+    Type string `json:"type"`
 }
 
 
@@ -75,10 +79,15 @@ func makeStateMessage(toMove bool, me Trainer, opponent Trainer, lastAttackMsg L
 
 func makePokemonMessage(pokemon Pokemon, full bool) PokemonMessage {
     msg := PokemonMessage{Id: pokemon.base.id, Name: pokemon.name,
-                          Level: pokemon.level, Health: pokemon.state.health}
+                          Level: pokemon.level, Health: pokemon.state.health,
+                          MaxHealth: pokemon.maxHealth}
     if full {
         for idx, move := range pokemon.moves {
-            msg.Moves = append(msg.Moves, MoveMessage{Name: move.Name, PP: pokemon.state.pp[idx]})
+            msg.Moves = append(msg.Moves, MoveMessage{Name: move.Name,
+                                                      PP: pokemon.state.pp[idx],
+                                                      MaxPP: pokemon.moves[idx].MaxPP,
+                                                      Power: pokemon.moves[idx].Power,
+                                                      Type: pokemon.moves[idx].TypeString})
         }
     }
 

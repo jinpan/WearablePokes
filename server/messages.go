@@ -10,6 +10,11 @@ type ActionMessage struct {
     Switch int `json:"switch"`
 }
 
+type LastAttackMessage struct {
+    Pokemon string `json:"pokemon"`
+    Move string `json:"move"`
+}
+
 type BattleResult struct {
     Outcome string `json:"outcome"`
     DMoney int `json:"dMoney"`
@@ -19,6 +24,7 @@ type StateMessage struct {
     MyPokemon []PokemonMessage `json:"my_pokemon"`
     OtherPokemon PokemonMessage `json:"other_pokemon"`
     MyMove bool `json:"my_move"`
+    LastAttack LastAttackMessage `json:"last_attack"`
 }
 
 type PokemonMessage struct {
@@ -57,12 +63,13 @@ func (sm StateMessage) toBytes() []byte {
     return msg
 }
 
-func makeStateMessage(toMove bool, me Trainer, opponent Trainer) StateMessage {
+func makeStateMessage(toMove bool, me Trainer, opponent Trainer, lastAttackMsg LastAttackMessage) StateMessage {
     sm := StateMessage{MyMove: toMove, MyPokemon: make([]PokemonMessage, len(me.pokemon))}
     for idx, pokemon := range me.pokemon {
         sm.MyPokemon[idx] = makePokemonMessage(pokemon, true)
     }
     sm.OtherPokemon = makePokemonMessage(opponent.pokemon[0], false)
+    sm.LastAttack = lastAttackMsg
     return sm
 }
 

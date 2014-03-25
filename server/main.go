@@ -84,12 +84,12 @@ func main() {
     }
     edwin = Trainer{name: "Edwin", id: "2", pokemon: []Pokemon{
         makePokemon("4", "Charmander", 100),
-        makePokemon("42", "COOL GUY", 100),
-        makePokemon("88", "Sweet Bro", 100),
-        makePokemon("12", "Chocolate", 100),
-        makePokemon("55", "Google Glass", 100),
-        makePokemon("56", "Myo", 100),
-        makePokemon("150", "MISSINGNO", 100)},
+        makePokemon("42", "Zubat", 100),
+        makePokemon("88", "Grimer", 100),
+        makePokemon("12", "Butterfree", 100),
+        makePokemon("55", "Golduck", 100),
+        makePokemon("56", "Mankey", 100),
+        makePokemon("150", "MewTwo", 100)},
         action: make(chan *ActionMessage),
         outbox: make(chan []byte),
         connections: make(map[*BattleConnection] bool),

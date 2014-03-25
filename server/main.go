@@ -71,10 +71,10 @@ func parseFiles() {
 func main() {
     parseFiles()
     jin = Trainer{name: "Jin", id: "1", pokemon: []Pokemon{
+        makePokemon("3", "Venusaur", 100),
         makePokemon("151", "Mew", 100),
         makePokemon("149", "Dragonite", 100),
         makePokemon("145", "Zapdos", 100),
-        makePokemon("3", "Venusaur", 100),
         makePokemon("6", "Blastoise", 100),
         makePokemon("9", "Charizard", 100)},
         action: make(chan *ActionMessage),

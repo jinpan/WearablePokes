@@ -95,7 +95,7 @@ func (pbs *PendingBattles) run() {
                 // remove old pending battles
                 now := time.Now()
                 for pb := range pbs.data {
-                    if now.Sub(pb.createdTime).Seconds() > 15 {
+                    if now.Sub(pb.createdTime).Seconds() > 60 {
                         delete(pbs.data, pb)
                         pb.remove()
                     }

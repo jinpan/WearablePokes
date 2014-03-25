@@ -15,6 +15,7 @@ type PendingBattle struct {
     Lat float64 `json:"lat"`
     Lng float64 `json:"lng"`
 
+    trainer *Trainer
     createdTime time.Time
     conn *BattleConnection
 }
@@ -52,7 +53,7 @@ func (battle1 *PendingBattle) CloseTo(battle2 *PendingBattle) bool {
 }
 
 func (pb *PendingBattle) remove() {
-    pb.conn.send <- nil
+    pb.conn.ws.Close()
 }
 
 func battleHandler(w http.ResponseWriter, r *http.Request) {
@@ -62,11 +63,7 @@ func battleHandler(w http.ResponseWriter, r *http.Request) {
     }
     log.Println("New Connection")
 
-    bc := &BattleConnection{ws: ws,
-                            send: make(chan []byte, 256),
-                            action: make(chan ActionMessage),
-                            started: false}
-    go bc.writer()
+    bc := &BattleConnection{ws: ws}
     bc.reader()
 }
 
@@ -77,12 +74,15 @@ func (pbs *PendingBattles) run() {
                 // try to find a match
                 matched := false
                 for pb := range pbs.data {
+                    if c.trainer == pb.trainer {
+                        break
+                    }
                     if c.CloseTo(pb) {
                         log.Println("matched")
                         delete(pbs.data, pb)
                         battle := Battle{conn1: pb.conn, conn2: c.conn}
-                        (*pb.conn).started = true
-                        (*c.conn).started = true
+                        c.trainer.battling = true
+                        pb.trainer.battling = true
                         go battle.start(pb.Trainer_id, c.Trainer_id)
                         matched = true
                         break
@@ -113,8 +113,6 @@ func (battle *Battle) start(trainer_id1 string, trainer_id2 string) {
 
     trainer1 := makeTrainer(trainer_id1)
     trainer2 := makeTrainer(trainer_id2)
-    battle.conn1.trainer = &trainer1
-    battle.conn2.trainer = &trainer2
 
     train1ToMove := rand.Float32() < 0.5
     lastAttackMsg := LastAttackMessage{}
@@ -127,46 +125,46 @@ func (battle *Battle) start(trainer_id1 string, trainer_id2 string) {
 
         if battle.conn1.trainer.isWiped() && battle.conn2.trainer.isWiped() {
             log.Println("TIE")
-            battle.conn1.send <- makeBattleResult(2).toBytes()
-            battle.conn2.send <- makeBattleResult(2).toBytes()
+            trainer1.outbox <- makeBattleResult(2).toBytes()
+            trainer2.outbox <- makeBattleResult(2).toBytes()
             break
         }
         if battle.conn2.trainer.isWiped() {
-            log.Println("Winner:", battle.conn1.trainer.name)
-            battle.conn1.send <- makeBattleResult(0).toBytes()
-            battle.conn2.send <- makeBattleResult(1).toBytes()
+            log.Println("Winner:", trainer1.name)
+            trainer1.outbox <- makeBattleResult(0).toBytes()
+            trainer2.outbox <- makeBattleResult(1).toBytes()
             break
         }
         if battle.conn1.trainer.isWiped() {
-            log.Println("Winner:", battle.conn2.trainer.name)
-            battle.conn1.send <- makeBattleResult(1).toBytes()
-            battle.conn2.send <- makeBattleResult(0).toBytes()
+            log.Println("Winner:", trainer2.name)
+            trainer1.outbox <- makeBattleResult(1).toBytes()
+            trainer2.outbox <- makeBattleResult(0).toBytes()
             break
         }
 
         state1, state2 := battle.getStates(train1ToMove, lastAttackMsg)
         log.Println("Sending states")
-        battle.conn1.send <- state1.toBytes()
-        battle.conn2.send <- state2.toBytes()
+        trainer1.outbox <- state1.toBytes()
+        trainer2.outbox <- state2.toBytes()
 
         log.Println("Waiting for action", train1ToMove)
         if train1ToMove {
-            conn1 := *battle.conn1
-            lastAttackMsg = battle.process(<-conn1.action)
+            lastAttackMsg = battle.process(<-trainer1.action)
         } else {
-            conn2 := *battle.conn2
-            lastAttackMsg = battle.process(<-conn2.action)
+            lastAttackMsg = battle.process(<-trainer2.action)
         }
     }
-    for _, pokemon := range battle.conn1.trainer.pokemon {
-        pokemon.state.health = pokemon.maxHealth
+    trainer1.battling = false
+    trainer2.battling = false
+    for _, pokemon := range trainer1.pokemon {
+        pokemon.heal()
     }
-    for _, pokemon := range battle.conn2.trainer.pokemon {
-        pokemon.state.health = pokemon.maxHealth
+    for _, pokemon := range trainer2.pokemon {
+        pokemon.heal()
     }
 }
 
-func (battle *Battle) process(action ActionMessage) LastAttackMessage {
+func (battle *Battle) process(action *ActionMessage) LastAttackMessage {
     log.Println("Processing", action)
 
     result := LastAttackMessage{}

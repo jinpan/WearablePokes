@@ -22,6 +22,8 @@ var (
     moves = make(map[string] *PokemonMove)
     base_pokemon = make(map[string] *BasePokemon)
 
+    trainers = make(map[string] *Trainer)
+
     jin = Trainer{}
     edwin = Trainer{}
 )
@@ -74,12 +76,25 @@ func main() {
         makePokemon("145", "Zapdos", 100),
         makePokemon("3", "Venusaur", 100),
         makePokemon("6", "Blastoise", 100),
-        makePokemon("9", "Charizard", 100),
-
-    }}
+        makePokemon("9", "Charizard", 100)},
+        action: make(chan *ActionMessage),
+        outbox: make(chan []byte),
+        connections: make(map[*BattleConnection] bool),
+        battling: false,
+    }
     edwin = Trainer{name: "Edwin", id: "2", pokemon: []Pokemon{
-        makePokemon("4", "Charmander", 100),
-    }}
+        makePokemon("4", "Charmander", 100)},
+        action: make(chan *ActionMessage),
+        outbox: make(chan []byte),
+        connections: make(map[*BattleConnection] bool),
+        battling: false,
+    }
+
+    trainers["1"] = &jin
+    trainers["2"] = &edwin
+
+    go jin.run()
+    go edwin.run()
 
     go pendingBattles.run()
     http.HandleFunc("/battle", battleHandler)

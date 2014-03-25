@@ -11,11 +11,7 @@ import (
 type BattleConnection struct {
     ws *websocket.Conn
 
-    send chan []byte
-    action chan ActionMessage
-
     trainer *Trainer
-    started bool
 }
 
 func (bc *BattleConnection) reader() {
@@ -26,33 +22,22 @@ func (bc *BattleConnection) reader() {
             break
         }
         log.Println("Received", string(msg))
-        log.Println("Started?", bc.started)
 
-        if bc.started {
+        if bc.trainer != nil && bc.trainer.battling {
             actionMessage := ActionMessage{Attack: -1, Switch: -1}
             _ = json.Unmarshal(msg, &actionMessage)
             actionMessage.trainer = bc.trainer
-            bc.action <-actionMessage
-            log.Println("put message onto channel for", bc.trainer.name)
+            bc.trainer.action <-&actionMessage
         } else {
             battle := PendingBattle{createdTime: time.Now(), conn: bc}
             _ = json.Unmarshal(msg, &battle)
             pendingBattles.toAdd <- &battle
+
+            trainer := trainers[battle.Trainer_id]
+            bc.trainer = trainer
+            battle.trainer = trainer
+            trainer.connections[bc] = true
         }
     }
 }
 
-func (bc *BattleConnection) writer() {
-    for {
-        msg := <-bc.send
-        log.Println("To send", string(msg))
-
-        err := bc.ws.WriteMessage(websocket.TextMessage, msg)
-        if err != nil {
-            log.Fatal(err)
-            break
-        }
-    }
-    bc.ws.Close()
-    log.Println("Writer exiting")
-}

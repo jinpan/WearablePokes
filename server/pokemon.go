@@ -69,6 +69,13 @@ func makePokemon(id string, name string, level uint) Pokemon {
     return pokemon
 }
 
+func (p Pokemon) heal() {
+    p.state.health = p.maxHealth
+    for idx := range p.moves {
+        p.state.pp[idx] = p.moves[idx].MaxPP
+    }
+}
+
 func (p1 Pokemon) attack(p2 Pokemon, move_idx int) float64 {
     move := p1.moves[move_idx]
 

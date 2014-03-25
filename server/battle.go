@@ -158,6 +158,12 @@ func (battle *Battle) start(trainer_id1 string, trainer_id2 string) {
             lastAttackMsg = battle.process(<-conn2.action)
         }
     }
+    for _, pokemon := range battle.conn1.trainer.pokemon {
+        pokemon.state.health = pokemon.maxHealth
+    }
+    for _, pokemon := range battle.conn2.trainer.pokemon {
+        pokemon.state.health = pokemon.maxHealth
+    }
 }
 
 func (battle *Battle) process(action ActionMessage) LastAttackMessage {
@@ -175,7 +181,6 @@ func (battle *Battle) process(action ActionMessage) LastAttackMessage {
         other_trainer = *battle.conn1.trainer
     }
 
-    log.Println("HEALTH", trainer.pokemon[0].state.health)
     if trainer.pokemon[0].state.health > 0 && action.Attack >= 0 && action.Attack < len(trainer.pokemon[0].moves) {
         if trainer.pokemon[0].state.pp[action.Attack] > 0 {
             result.Multiplier = trainer.pokemon[0].attack(other_trainer.pokemon[0], action.Attack)

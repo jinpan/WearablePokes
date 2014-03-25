@@ -23,7 +23,6 @@ func (bc *BattleConnection) reader() {
         _, msg, err := bc.ws.ReadMessage()
         if err != nil {
             bc.ws.WriteMessage(websocket.TextMessage, []byte("Error reading Message"))
-            log.Fatal("Error reading message")
             break
         }
         log.Println("Received", string(msg))

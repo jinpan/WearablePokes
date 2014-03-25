@@ -13,6 +13,7 @@ type ActionMessage struct {
 type LastAttackMessage struct {
     Pokemon string `json:"pokemon"`
     Move string `json:"move"`
+    Multiplier float64 `json:"multiplier"`
 }
 
 type BattleResult struct {

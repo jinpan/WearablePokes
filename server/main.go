@@ -78,7 +78,7 @@ func main() {
 
     }}
     edwin = Trainer{name: "Edwin", id: "2", pokemon: []Pokemon{
-        makePokemon("10", "Caterpie", 5),
+        makePokemon("4", "Charmander", 100),
     }}
 
     go pendingBattles.run()

@@ -122,8 +122,6 @@ func (battle *Battle) start(trainer_id1 string, trainer_id2 string) {
     roundNum := 0
     for {
         log.Println("Round", roundNum)
-        log.Println("Trainer 1", battle.conn1.trainer)
-        log.Println("Trainer 2", battle.conn2.trainer)
         roundNum += 1
         train1ToMove = !train1ToMove
 
@@ -177,9 +175,10 @@ func (battle *Battle) process(action ActionMessage) LastAttackMessage {
         other_trainer = *battle.conn1.trainer
     }
 
+    log.Println("HEALTH", trainer.pokemon[0].state.health)
     if trainer.pokemon[0].state.health > 0 && action.Attack >= 0 && action.Attack < len(trainer.pokemon[0].moves) {
         if trainer.pokemon[0].state.pp[action.Attack] > 0 {
-            trainer.pokemon[0].attack(other_trainer.pokemon[0], action.Attack)
+            result.Multiplier = trainer.pokemon[0].attack(other_trainer.pokemon[0], action.Attack)
             result.Pokemon = trainer.pokemon[0].name
             result.Move = trainer.pokemon[0].moves[action.Attack].Name
         }
@@ -190,7 +189,6 @@ func (battle *Battle) process(action ActionMessage) LastAttackMessage {
             trainer.pokemon[0] = tmp
         }
     }
-
     return result
 }
 

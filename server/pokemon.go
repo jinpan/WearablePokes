@@ -69,7 +69,7 @@ func makePokemon(id string, name string, level uint) Pokemon {
     return pokemon
 }
 
-func (p1 Pokemon) attack(p2 Pokemon, move_idx int) {
+func (p1 Pokemon) attack(p2 Pokemon, move_idx int) float64 {
     move := p1.moves[move_idx]
 
     A := float64(p1.level)
@@ -90,6 +90,8 @@ func (p1 Pokemon) attack(p2 Pokemon, move_idx int) {
         p2.state.health -= dmg
     }
     p1.state.pp[move_idx] -= 1
+
+    return X
 }
 
 
